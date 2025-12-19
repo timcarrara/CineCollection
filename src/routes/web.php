@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\FilmController;
+use App\Http\Controllers\GenreController;
 
 Route::get('/', function () {
     return view('welcome');
@@ -26,3 +27,15 @@ Route::put('/films/{film}', [FilmController::class, 'update'])
 
 Route::delete('/films/{film}', [FilmController::class, 'destroy'])
     ->name('films.destroy');
+
+Route::get('/genres', [GenreController::class, 'index'])->name('genres.index');
+    
+Route::get('/genres/create', [GenreController::class, 'create'])->name('genres.create');
+    
+Route::post('/genres', [GenreController::class, 'store'])->name('genres.store');
+    
+Route::get('/genres/{genre}/edit', [GenreController::class, 'edit'])->name('genres.edit');
+    
+Route::put('/genres/{genre}', [GenreController::class, 'update'])->name('genres.update');
+    
+Route::delete('/genres/{genre}', [GenreController::class, 'destroy'])->name('genres.destroy');
