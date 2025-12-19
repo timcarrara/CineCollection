@@ -4,6 +4,9 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
+use App\Models\Genre;
+use App\Models\User;
+
 return new class extends Migration
 {
     /**
@@ -13,6 +16,21 @@ return new class extends Migration
     {
         Schema::create('films', function (Blueprint $table) {
             $table->id();
+
+            $table->string('title');
+            $table->string('director')->nullable();
+            $table->unsignedSmallInteger('year')->nullable();
+            $table->text('synopsis')->nullable();
+
+            // Clés étrangères
+            $table->foreignIdFor(Genre::class)
+                  ->constrained()
+                  ->cascadeOnDelete();
+
+            $table->foreignIdFor(User::class)
+                  ->constrained()
+                    ->cascadeOnDelete();
+
             $table->timestamps();
         });
     }
