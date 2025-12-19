@@ -11,6 +11,12 @@
         <p class="mt-1">{{ $film->synopsis ?? 'Aucun synopsis' }}</p>
     </div>
 
+    <a href="{{ route('films.edit', $film) }}"
+        class="inline-block mb-4 bg-yellow-500 text-white px-4 py-2 rounded">
+        ✏️ Modifier
+    </a>
+
+
     <a href="{{ route('films.index') }}"
        class="inline-block mt-6 text-blue-600 underline">
         ← Retour à la liste

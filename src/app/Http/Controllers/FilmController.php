@@ -48,4 +48,30 @@ class FilmController extends Controller
         return redirect()->route('films.index');
     }
 
+    public function edit(Film $film)
+    {
+        $genres = Genre::orderBy('name')->get();
+
+        return view('films.edit', compact('film', 'genres'));
+    }
+
+    public function update(Request $request, Film $film)
+    {
+        $request->validate([
+            'title' => 'required|string|max:255',
+            'genre_id' => 'required|exists:genres,id',
+            'release_year' => 'nullable|integer',
+        ]);
+
+        $film->update([
+            'title' => $request->title,
+            'director' => $request->director,
+            'release_year' => $request->release_year,
+            'synopsis' => $request->synopsis,
+            'genre_id' => $request->genre_id,
+        ]);
+
+        return redirect()->route('films.show', $film);
+    }
+
 }
