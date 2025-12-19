@@ -19,13 +19,14 @@ return new class extends Migration
 
             $table->string('title');
             $table->string('director')->nullable();
-            $table->unsignedSmallInteger('year')->nullable();
+            $table->unsignedSmallInteger('release_year')->nullable();
             $table->text('synopsis')->nullable();
 
             // Clés étrangères
             $table->foreignIdFor(Genre::class)
                   ->constrained()
-                  ->cascadeOnDelete();
+                  ->cascadeOnDelete()
+                  ->index();
 
             $table->foreignIdFor(User::class)
                   ->constrained()
