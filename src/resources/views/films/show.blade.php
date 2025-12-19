@@ -16,6 +16,17 @@
         ✏️ Modifier
     </a>
 
+    <form method="POST"
+        action="{{ route('films.destroy', $film) }}"
+        onsubmit="return confirm('Voulez-vous vraiment supprimer ce film ?');"
+        class="inline-block ml-2">
+        @csrf
+        @method('DELETE')
+
+        <button class="bg-red-600 text-white px-4 py-2 rounded">
+            🗑 Supprimer
+        </button>
+    </form>
 
     <a href="{{ route('films.index') }}"
        class="inline-block mt-6 text-blue-600 underline">

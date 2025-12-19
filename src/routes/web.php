@@ -23,3 +23,6 @@ Route::get('/films/{film}/edit', [FilmController::class, 'edit'])
 
 Route::put('/films/{film}', [FilmController::class, 'update'])
     ->name('films.update');
+
+Route::delete('/films/{film}', [FilmController::class, 'destroy'])
+    ->name('films.destroy');

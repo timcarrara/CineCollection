@@ -74,4 +74,11 @@ class FilmController extends Controller
         return redirect()->route('films.show', $film);
     }
 
+    public function destroy(Film $film)
+    {
+     $film->delete();
+
+        return redirect()->route('films.index');
+    }
+
 }
