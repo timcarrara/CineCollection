@@ -22,6 +22,12 @@ class FilmController extends Controller
         return view('films.create', compact('genres'));
     }
 
+    public function show(Film $film)
+    {
+        return view('films.show', compact('film'));
+    }
+
+
     public function store(Request $request)
     {
         $request->validate([

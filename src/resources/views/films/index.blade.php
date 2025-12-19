@@ -8,13 +8,21 @@
         <ul>
             @foreach ($films as $film)
                 <li class="mb-4 border p-4 rounded">
-                    <strong>{{ $film->title }}</strong><br>
+
+                    {{-- Titre cliquable vers le détail --}}
+                    <a href="{{ route('films.show', $film) }}"
+                       class="text-lg font-bold text-blue-600 underline">
+                        {{ $film->title }}
+                    </a>
+                    <br>
 
                     Genre :
-                    {{ optional($film->genre)->name ?? 'Non défini' }}<br>
+                    {{ optional($film->genre)->name ?? 'Non défini' }}
+                    <br>
 
                     Ajouté par :
                     {{ optional($film->user)->name ?? 'Inconnu' }}
+
                 </li>
             @endforeach
         </ul>

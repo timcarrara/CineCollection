@@ -10,6 +10,10 @@ Route::get('/', function () {
 Route::get('/films', [FilmController::class, 'index'])
      ->name('films.index');
 
+Route::get('/films/{film}', [FilmController::class, 'show'])
+     ->name('films.show');
+ 
+
 Route::get('/films/create', [FilmController::class, 'create'])->name('films.create');
 
 Route::post('/films', [FilmController::class, 'store'])->name('films.store');
