@@ -7,6 +7,19 @@ use Illuminate\Http\Request;
 
 class GenreController extends Controller
 {
+    public function __construct()
+    {
+        // Middleware admin sur TOUT le controller
+        $this->middleware(function ($request, $next) {
+
+            if (!auth()->check() || !auth()->user()->isAdmin()) {
+                abort(403);
+            }
+
+            return $next($request);
+        });
+    }
+
     public function index()
     {
         $genres = Genre::orderBy('name')->get();
